@@ -7,6 +7,12 @@
         "ckeditor"
     ],
     "license": "MIT",
+    "authors": [
+        {
+            "name": "Web Communications",
+            "email": "web@wayne.edu"
+        }
+    ],
     "require": {
         "php": ">=7.1.0"
     },

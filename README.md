@@ -1,13 +1,13 @@
 # Laravel Nova CKEditor 4 Field
 
-This nova package allows you to use [CKEditor 4](https://ckeditor.com/ckeditor-4/) for text areas.
+This nova package allows you to use [CKEditor 4](https://ckeditor.com/ckeditor-4/) for text areas using [Vue Ckeditor2](https://vue-ckeditor2.surge.sh/)
 
 ## Installation
 
 You can install the package into a Laravel application that uses [Nova](https://nova.laravel.com) via composer:
 
 ```bash
-composer require waynestate/nova-ckeditor-field
+composer require waynestate/nova-ckeditor4-field
 ```
 
 By default the CKEditor 4 instance used is the latest (4.10.1) Standard All version. If you wish to use a different CKEditor 4 you can do so by editing the configuration.
