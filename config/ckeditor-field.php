@@ -25,6 +25,18 @@ return [
     |
     */
     'options' => [
-
+        'toolbar' => [
+            ['Cut','Copy','Paste','PasteText','PasteFromWord','-','Undo','Redo'],
+            ['Scayt'],
+            ['Link','Unlink','Anchor'],
+            ['Image','Table','HorizontalRule','SpecialChar'],
+            ['Maximize'],
+            ['Source'],
+            '/',
+            ['Bold','Italic','Strike','RemoveFormat','-','Subscript','Superscript'],
+            ['NumberedList','BulletedList','-','Outdent','Indent','Blockquote'],
+            ['Format'],
+            ['About']
+        ]
     ],
 ];
