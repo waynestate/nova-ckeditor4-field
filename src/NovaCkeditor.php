@@ -25,7 +25,7 @@ class CKEditor extends Field
     /**
      * Set configuration options for the CKEditor editor instance.
      *
-     * @param  array  $options
+     * @param  array $options
      * @return $this
      */
     public function options($options)

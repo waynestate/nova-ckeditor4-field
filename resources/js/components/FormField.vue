@@ -24,11 +24,11 @@
 
 
 <script>
-    import { FormField, HandlesValidationErrors } from 'laravel-nova'
+    import {FormField, HandlesValidationErrors} from 'laravel-nova'
     import VueCkeditor from 'vue-ckeditor2';
 
     export default {
-        components: { VueCkeditor },
+        components: {VueCkeditor},
 
         mixins: [FormField, HandlesValidationErrors],
 

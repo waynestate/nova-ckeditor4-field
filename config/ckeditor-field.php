@@ -26,17 +26,17 @@ return [
     */
     'options' => [
         'toolbar' => [
-            ['Source','-','Cut','Copy','Paste','PasteText','PasteFromWord','-','Print', 'SpellChecker', 'Scayt'],
-            ['Undo','Redo','-','Find','Replace','-','SelectAll','RemoveFormat'],
-            ['Image','Table','HorizontalRule','SpecialChar','PageBreak'],
+            ['Source', '-', 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Print', 'SpellChecker', 'Scayt'],
+            ['Undo', 'Redo', '-', 'Find', 'Replace', '-', 'SelectAll', 'RemoveFormat'],
+            ['Image', 'Table', 'HorizontalRule', 'SpecialChar', 'PageBreak'],
             '/',
-            ['Bold','Italic','Strike','-','Subscript','Superscript'],
-            ['NumberedList','BulletedList','-','Outdent','Indent','Blockquote','CreateDiv'],
-            ['JustifyLeft','JustifyCenter','JustifyRight'],
-            ['Link','Unlink','Anchor'],
+            ['Bold', 'Italic', 'Strike', '-', 'Subscript', 'Superscript'],
+            ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', 'Blockquote', 'CreateDiv'],
+            ['JustifyLeft', 'JustifyCenter', 'JustifyRight'],
+            ['Link', 'Unlink', 'Anchor'],
             '/',
-            ['Format','FontSize'],
-            ['Maximize', 'ShowBlocks','-','About']
+            ['Format', 'FontSize'],
+            ['Maximize', 'ShowBlocks', '-', 'About']
         ]
     ],
 ];

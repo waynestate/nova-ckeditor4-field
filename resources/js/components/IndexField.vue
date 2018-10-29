@@ -3,7 +3,7 @@
 </template>
 
 <script>
-export default {
-    props: ['resourceName', 'field'],
-}
+    export default {
+        props: ['resourceName', 'field'],
+    }
 </script>
