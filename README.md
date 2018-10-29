@@ -2,6 +2,8 @@
 
 This nova package allows you to use [CKEditor 4](https://ckeditor.com/ckeditor-4/) for text areas using [Vue Ckeditor2](https://vue-ckeditor2.surge.sh/)
 
+![CKEditor Form Field](docs/form-field.png)
+
 ## Installation
 
 You can install the package into a Laravel application that uses [Nova](https://nova.laravel.com) via composer:

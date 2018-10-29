@@ -26,17 +26,17 @@ return [
     */
     'options' => [
         'toolbar' => [
-            ['Cut','Copy','Paste','PasteText','PasteFromWord','-','Undo','Redo'],
-            ['Scayt'],
-            ['Link','Unlink','Anchor'],
-            ['Image','Table','HorizontalRule','SpecialChar'],
-            ['Maximize'],
-            ['Source'],
+            ['Source','-','Cut','Copy','Paste','PasteText','PasteFromWord','-','Print', 'SpellChecker', 'Scayt'],
+            ['Undo','Redo','-','Find','Replace','-','SelectAll','RemoveFormat'],
+            ['Image','Table','HorizontalRule','SpecialChar','PageBreak'],
             '/',
-            ['Bold','Italic','Strike','RemoveFormat','-','Subscript','Superscript'],
-            ['NumberedList','BulletedList','-','Outdent','Indent','Blockquote'],
-            ['Format'],
-            ['About']
+            ['Bold','Italic','Strike','-','Subscript','Superscript'],
+            ['NumberedList','BulletedList','-','Outdent','Indent','Blockquote','CreateDiv'],
+            ['JustifyLeft','JustifyCenter','JustifyRight'],
+            ['Link','Unlink','Anchor'],
+            '/',
+            ['Format','FontSize'],
+            ['Maximize', 'ShowBlocks','-','About']
         ]
     ],
 ];
