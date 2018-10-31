@@ -10,7 +10,7 @@
 
         <div class="w-4/5 px-8 py-6">
             <vue-ckeditor
-                id="field.name"
+                :id="field.name"
                 v-model="value"
                 :config="config"
             />
