@@ -5,7 +5,7 @@ When contributing to this repository, please first discuss the change you wish t
 1. Please open an issue before submitting a pull request.
 1. Fork the waynestate/nova-ckeditor4-field.
 1. Make your changes on the fork.
-1. Submit a PR to the waynestate/nova-ckeditor4-field **develop** branch.
+1. Submit a PR to the waynestate/nova-ckeditor4-field **master** branch.
 
 ### Coding conventions
 
