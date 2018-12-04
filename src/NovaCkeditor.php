@@ -3,9 +3,12 @@
 namespace Waynestate\Nova;
 
 use Laravel\Nova\Fields\Field;
+use Laravel\Nova\Fields\Expandable;
 
 class CKEditor extends Field
 {
+    use Expandable;
+
     /**
      * The field's component.
      *
@@ -34,6 +37,19 @@ class CKEditor extends Field
 
         return $this->withMeta([
             'options' => array_merge($currentOptions, $options),
+        ]);
+    }
+
+
+    /**
+     * Prepare the element for JSON serialization.
+     *
+     * @return array
+     */
+    public function jsonSerialize()
+    {
+        return array_merge(parent::jsonSerialize(), [
+            'shouldShow' => $this->shouldBeExpanded(),
         ]);
     }
 }
