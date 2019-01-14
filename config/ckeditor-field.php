@@ -2,6 +2,31 @@
 return [
     /*
     |--------------------------------------------------------------------------------
+    | CKEditor Options
+    |--------------------------------------------------------------------------------
+    |
+    | To view a list of all available options checkout the CKEditor API documentation
+    | https://ckeditor.com/docs/ckeditor4/latest/api/CKEDITOR_config.html
+    |
+    */
+    'options' => [
+        'toolbar' => [
+            ['Source', '-', 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Print', 'SpellChecker', 'Scayt'],
+            ['Undo', 'Redo', '-', 'Find', 'Replace', '-', 'SelectAll', 'RemoveFormat'],
+            ['Image', 'Table', 'HorizontalRule', 'SpecialChar', 'PageBreak'],
+            '/',
+            ['Bold', 'Italic', 'Strike', '-', 'Subscript', 'Superscript'],
+            ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', 'Blockquote', 'CreateDiv'],
+            ['JustifyLeft', 'JustifyCenter', 'JustifyRight'],
+            ['Link', 'Unlink', 'Anchor'],
+            '/',
+            ['Format', 'FontSize'],
+            ['Maximize', 'ShowBlocks', '-', 'About']
+        ]
+    ],
+
+    /*
+    |--------------------------------------------------------------------------------
     | CKEditor 4 Javascript URL
     |--------------------------------------------------------------------------------
     |
@@ -26,29 +51,4 @@ return [
     |
     */
     'ckeditor_url' => 'https://cdn.ckeditor.com/4.11.2/full-all/ckeditor.js',
-
-    /*
-    |--------------------------------------------------------------------------------
-    | CKEditor Options
-    |--------------------------------------------------------------------------------
-    |
-    | To view a list of all available options checkout the CKEditor API documentation
-    | https://ckeditor.com/docs/ckeditor4/latest/api/CKEDITOR_config.html
-    |
-    */
-    'options' => [
-        'toolbar' => [
-            ['Source', '-', 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Print', 'SpellChecker', 'Scayt'],
-            ['Undo', 'Redo', '-', 'Find', 'Replace', '-', 'SelectAll', 'RemoveFormat'],
-            ['Image', 'Table', 'HorizontalRule', 'SpecialChar', 'PageBreak'],
-            '/',
-            ['Bold', 'Italic', 'Strike', '-', 'Subscript', 'Superscript'],
-            ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', 'Blockquote', 'CreateDiv'],
-            ['JustifyLeft', 'JustifyCenter', 'JustifyRight'],
-            ['Link', 'Unlink', 'Anchor'],
-            '/',
-            ['Format', 'FontSize'],
-            ['Maximize', 'ShowBlocks', '-', 'About']
-        ]
-    ],
 ];
