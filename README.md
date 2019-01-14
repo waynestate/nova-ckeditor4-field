@@ -50,6 +50,7 @@ php artisan vendor:publish --tag=config --provider=Waynestate\\Nova\\CKEditorFie
 
 ## Customization
 
+### Configuration options
 You can change the [configuration options](https://ckeditor.com/docs/ckeditor4/latest/api/CKEDITOR_config.html) of the CKEditor instance by either editing the published config file at `nova.ckeditor-field.options`
 
 ```php
@@ -98,6 +99,11 @@ public function fields(Request $request)
     ];
 }
 ```
+
+### Custom CKEditor Instance
+If you wish to not use the CKEditor from the CKEditor CDN, you can change the `ckeditor_url` under `config/nova/ckeditor-field.php` to point to the URL of the CKEditor you wish to use.
+
+If you wish to go the route of a Custom CKEditor Instance using Composer then follow the steps at [Using Composer for Custom CKEditor Instance](https://github.com/waynestate/nova-ckeditor4-field/wiki/Using-Composer-for-Custom-CKEditor-Instance)
 
 ## Contributing
 
