@@ -16,7 +16,7 @@ class CKEditorFieldServiceProvider extends ServiceProvider
     public function boot()
     {
         Nova::serving(function (ServingNova $event) {
-            Nova::script('ckeditor', config('nova.ckeditor-field.ckeditor_url', 'https://cdn.ckeditor.com/4.10.1/standard-all/ckeditor.js'));
+            Nova::script('ckeditor', config('nova.ckeditor-field.ckeditor_url', 'https://cdn.ckeditor.com/4.11.2/full-all/ckeditor.js'));
 
             Nova::script('nova-ckeditor', __DIR__ . '/../dist/js/field.js');
             Nova::style('nova-ckeditor', __DIR__ . '/../dist/css/field.css');
