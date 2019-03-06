@@ -31,7 +31,6 @@ return [
     |--------------------------------------------------------------------------------
     |
     | This is the URL used to load the CKEditor instance.
-    | ex: https://cdn.ckeditor.com/4.11.2/full-all/ckeditor.js
     |
     | Note: The URL must begin with "http://" or "https://"
     |
@@ -50,5 +49,5 @@ return [
     | CKEditor 4 is only supported. This will not work with CKEditor 5
     |
     */
-    'ckeditor_url' => 'https://cdn.ckeditor.com/4.11.2/full-all/ckeditor.js',
+    'ckeditor_url' => 'https://cdn.ckeditor.com/4.11.3/full-all/ckeditor.js',
 ];
