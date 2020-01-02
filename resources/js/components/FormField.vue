@@ -2,7 +2,6 @@
     <default-field :field="field" :errors="errors" :full-width-content="true">
         <template slot="field">
             <vue-ckeditor
-                :id="field.name"
                 v-model="value"
                 :config="config"
             />
