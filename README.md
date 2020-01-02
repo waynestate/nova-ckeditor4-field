@@ -45,7 +45,7 @@ class Article extends Resource
 To change any of config values, publish a config file:
 
 ```bash
-php artisan vendor:publish --tag=config --provider=Waynestate\\Nova\\CKEditorFieldServiceProvider
+php artisan vendor:publish --tag=config --provider="Waynestate\Nova\CKEditorFieldServiceProvider"
 ```
 
 ## Customization
