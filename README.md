@@ -12,7 +12,7 @@ You can install the package into a Laravel application that uses [Nova](https://
 composer require waynestate/nova-ckeditor4-field
 ```
 
-By default the CKEditor 4 instance used is the latest (4.11.3) Full All version (https://cdn.ckeditor.com/). If you wish to use a different CKEditor 4 you can do so by publishing and editing the configuration.
+By default the CKEditor 4 instance used is the latest (4.14.0) Full All version (https://cdn.ckeditor.com/). If you wish to use a different CKEditor 4 you can do so by publishing and editing the configuration.
 
 ## Usage
 
