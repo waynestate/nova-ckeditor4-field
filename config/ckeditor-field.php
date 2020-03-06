@@ -39,7 +39,7 @@ return [
     |
     | or
     |
-    | you could use use composer to install your CKEditor from
+    | you could use composer to install your CKEditor from
     | https://github.com/ckeditor/ckeditor-releases/ and symbolic link the
     | "vendor/ckeditor/ckeditor" to "public/js/ckeditor".
     | then replace the "ckeditor_url" to be
@@ -49,5 +49,5 @@ return [
     | CKEditor 4 is only supported. This will not work with CKEditor 5
     |
     */
-    'ckeditor_url' => 'https://cdn.ckeditor.com/4.11.3/full-all/ckeditor.js',
+    'ckeditor_url' => 'https://cdn.ckeditor.com/4.14.0/full-all/ckeditor.js',
 ];
