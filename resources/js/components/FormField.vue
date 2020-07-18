@@ -4,7 +4,7 @@
             <vue-ckeditor
                 :id="field.attribute"
                 v-model="value"
-                :config="config"
+                :config="editorConfig"
             />
         </template>
     </default-field>
@@ -24,10 +24,24 @@
 
         data() {
             return {
-                config: this.field.options
+                defaultEditorConfig: this.field.options,
+                withFiles: this.field.withFiles,
             }
         },
-
+        computed: {
+            editorConfig() {
+                let cfg = this.defaultEditorConfig
+                let token = document.head.querySelector('meta[name="csrf-token"]').content
+                if (!!this.withFiles) {
+                    cfg.filebrowserImageUploadUrl = `/nova-vendor/nova-ckeditor4-field/${
+                    this.resourceName
+                    }/upload/${
+                    this.field.attribute
+                    }?_token=${token}&draftId=${this.uuidv4()}`
+                }
+                return cfg
+            },
+        },
         methods: {
             /*
              * Set the initial, internal value for the field.
@@ -48,7 +62,15 @@
              */
             handleChange(value) {
                 this.value = value
-            }
+            },
+
+            uuidv4() {
+                return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>
+                            (c ^
+                                (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))
+                            ).toString(16)
+                    )
+            },
         }
     }
 </script>

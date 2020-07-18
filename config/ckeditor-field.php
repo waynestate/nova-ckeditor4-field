@@ -22,7 +22,8 @@ return [
             '/',
             ['Format', 'FontSize'],
             ['Maximize', 'ShowBlocks', '-', 'About']
-        ]
+        ],
+        'extraPlugins' => [ 'image2' ]
     ],
 
     /*
