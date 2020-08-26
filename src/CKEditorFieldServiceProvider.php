@@ -2,9 +2,10 @@
 
 namespace Waynestate\Nova;
 
-use Laravel\Nova\Nova;
-use Laravel\Nova\Events\ServingNova;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
+use Laravel\Nova\Events\ServingNova;
+use Laravel\Nova\Nova;
 
 class CKEditorFieldServiceProvider extends ServiceProvider
 {
@@ -15,11 +16,17 @@ class CKEditorFieldServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->app->booted(function () {
+            $this->routes();
+        });
+
+        $this->loadMigrationsFrom(__DIR__ . '/migrations/2020_07_17_214240_add_trix_table');
+
         Nova::serving(function (ServingNova $event) {
-            Nova::script('ckeditor', config('nova.ckeditor-field.ckeditor_url', 'https://cdn.ckeditor.com/4.14.0/full-all/ckeditor.js'));
+            Nova::script('ckeditor',
+                config('nova.ckeditor-field.ckeditor_url', 'https://cdn.ckeditor.com/4.14.0/full-all/ckeditor.js'));
 
             Nova::script('nova-ckeditor', __DIR__ . '/../dist/js/field.js');
-            // Nova::style('nova-ckeditor', __DIR__ . '/../dist/css/field.css');
         });
 
         $this->publishes([
@@ -35,5 +42,22 @@ class CKEditorFieldServiceProvider extends ServiceProvider
     public function register()
     {
         //
+    }
+
+    /**
+     * Register the tool's routes.
+     *
+     * @return void
+     */
+    protected function routes()
+    {
+        if ($this->app->routesAreCached()) {
+            return;
+        }
+
+        Route::middleware(['nova'])
+             ->prefix('nova-vendor/nova-ckeditor4-field')
+             ->namespace('Waynestate\Nova\Http\Controllers')
+             ->group(__DIR__ . '/../routes/api.php');
     }
 }
