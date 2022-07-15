@@ -1,7 +1,7 @@
 <template>
     <default-field :field="field" :errors="errors" :full-width-content="true">
         <template slot="field">
-            <vue-ckeditor
+            <ckeditor
                 :id="field.attribute"
                 v-model="value"
                 :config="config"
@@ -12,11 +12,11 @@
 
 
 <script>
-    import {FormField, HandlesValidationErrors} from 'laravel-nova'
-    import VueCkeditor from 'vue-ckeditor2';
+    import { FormField, HandlesValidationErrors } from 'laravel-nova'
+    import CKEditor from 'ckeditor4-vue';
 
     export default {
-        components: {VueCkeditor},
+        components: {CKEditor},
 
         mixins: [FormField, HandlesValidationErrors],
 

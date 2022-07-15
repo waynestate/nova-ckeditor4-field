@@ -1,5 +1,9 @@
-Nova.booting((Vue, router) => {
-    Vue.component('index-nova-ckeditor', require('./components/IndexField'));
-    Vue.component('detail-nova-ckeditor', require('./components/DetailField'));
-    Vue.component('form-nova-ckeditor', require('./components/FormField'));
-})
+import IndexField from './components/IndexField';
+import DetailField from './components/DetailField';
+import FormField from './components/FormField';
+
+Nova.booting((app, store) => {
+    app.component('index-nova-ckeditor', IndexField);
+    app.component('detail-nova-ckeditor', DetailField);
+    app.component('form-nova-ckeditor', FormField);
+});
