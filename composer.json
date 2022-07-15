@@ -1,5 +1,6 @@
 {
     "name": "waynestate/nova-ckeditor4-field",
+    "version": "1.0.0-dev",
     "description": "This nova package allows you to use CKEditor 4 for text areas.",
     "keywords": [
         "laravel",
