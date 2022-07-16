@@ -12,12 +12,13 @@
   },
   "devDependencies": {
     "@vue/compiler-sfc": "^3.2.22",
-    "ckeditor4-vue": "^2.1.0",
     "form-backend-validation": "^2.3.3",
     "laravel-mix": "^6.0.41",
     "lodash": "^4.17.21",
     "postcss": "^8.3.11",
     "vue-loader": "^16.8.3"
   },
-  "dependencies": {}
+  "dependencies": {
+    "ckeditor4-integrations-common": "^1.0.0"
+  }
 }

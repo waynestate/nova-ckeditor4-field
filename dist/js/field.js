@@ -30,14 +30,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var laravel_nova__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! laravel-nova */ "../../vendor/laravel/nova/resources/js/mixins/packages.js");
-/* harmony import */ var ckeditor4_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ckeditor4-vue */ "./node_modules/ckeditor4-vue/dist/ckeditor.js");
-/* harmony import */ var ckeditor4_vue__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(ckeditor4_vue__WEBPACK_IMPORTED_MODULE_1__);
-
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  components: {
-    CKEditor: (ckeditor4_vue__WEBPACK_IMPORTED_MODULE_1___default())
-  },
   mixins: [laravel_nova__WEBPACK_IMPORTED_MODULE_0__.FormField, laravel_nova__WEBPACK_IMPORTED_MODULE_0__.HandlesValidationErrors],
   props: ['resourceName', 'resourceId', 'field'],
   data: function data() {
@@ -129,21 +123,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "vue");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 
-var _hoisted_1 = {
-  slot: "field"
-};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_ckeditor = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("ckeditor");
 
-  var _component_default_field = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("default-field");
+  var _component_DefaultField = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("DefaultField");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_default_field, {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_DefaultField, {
     field: $props.field,
     errors: _ctx.errors,
-    "full-width-content": true
+    "show-help-text": _ctx.showHelpText
   }, {
-    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("template", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ckeditor, {
+    field: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ckeditor, {
         id: $props.field.attribute,
         modelValue: _ctx.value,
         "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
@@ -152,14 +143,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         config: $data.config
       }, null, 8
       /* PROPS */
-      , ["id", "modelValue", "config"])])];
+      , ["id", "modelValue", "config"])];
     }),
     _: 1
     /* STABLE */
 
   }, 8
   /* PROPS */
-  , ["field", "errors"]);
+  , ["field", "errors", "show-help-text"]);
 }
 
 /***/ }),
@@ -189,6 +180,186 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
 /***/ }),
 
+/***/ "./resources/js/components/CKEditor.js":
+/*!*********************************************!*\
+  !*** ./resources/js/components/CKEditor.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "vue");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var ckeditor4_integrations_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ckeditor4-integrations-common */ "./node_modules/ckeditor4-integrations-common/dist/index.esm.js");
+/**
+ * @license Copyright (c) 2003-2022, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md.
+ */
+
+/* global CKEDITOR */
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: 'ckeditor',
+  render: function render() {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.h)('div', {}, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.h)(this.tagName)]);
+  },
+  props: {
+    value: {
+      type: String,
+      "default": ''
+    },
+    type: {
+      type: String,
+      "default": 'classic',
+      validator: function validator(type) {
+        return ['classic', 'inline'].includes(type);
+      }
+    },
+    editorUrl: {
+      type: String,
+      "default": 'https://cdn.ckeditor.com/4.19.0/standard-all/ckeditor.js'
+    },
+    config: {
+      type: Object,
+      "default": function _default() {}
+    },
+    tagName: {
+      type: String,
+      "default": 'textarea'
+    },
+    readOnly: {
+      type: Boolean,
+      "default": null // Use null as the default value, so `config.readOnly` can take precedence.
+
+    },
+    throttle: {
+      type: Number,
+      "default": 80
+    }
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    (0,ckeditor4_integrations_common__WEBPACK_IMPORTED_MODULE_1__.getEditorNamespace)(this.editorUrl, function (namespace) {
+      _this.$emit('namespaceloaded', namespace);
+    }).then(function () {
+      if (_this.$_destroyed) {
+        return;
+      }
+
+      var config = _this.prepareConfig();
+
+      var method = _this.type === 'inline' ? 'inline' : 'replace';
+      var element = _this.$el.firstElementChild;
+      CKEDITOR[method](element, config);
+    });
+  },
+  beforeDestroy: function beforeDestroy() {
+    if (this.instance) {
+      this.instance.destroy();
+    }
+
+    this.$_destroyed = true;
+  },
+  watch: {
+    value: function value(val) {
+      if (this.instance && this.instance.getData() !== val) {
+        this.instance.setData(val);
+      }
+    },
+    readOnly: function readOnly(val) {
+      if (this.instance) {
+        this.instance.setReadOnly(val);
+      }
+    }
+  },
+  methods: {
+    prepareConfig: function prepareConfig() {
+      var _this2 = this;
+
+      var config = this.config || {};
+      config.on = config.on || {};
+
+      if (config.delayIfDetached === undefined) {
+        config.delayIfDetached = true;
+      }
+
+      if (this.readOnly !== null) {
+        config.readOnly = this.readOnly;
+      }
+
+      var userInstanceReadyCallback = config.on.instanceReady;
+
+      config.on.instanceReady = function (evt) {
+        _this2.instance = evt.editor;
+
+        _this2.$nextTick().then(function () {
+          _this2.prepareComponentData();
+
+          if (userInstanceReadyCallback) {
+            userInstanceReadyCallback(evt);
+          }
+        });
+      };
+
+      return config;
+    },
+    prepareComponentData: function prepareComponentData() {
+      var _this3 = this;
+
+      var data = this.value;
+      this.instance.fire('lockSnapshot');
+      this.instance.setData(data, {
+        callback: function callback() {
+          _this3.$_setUpEditorEvents();
+
+          var newData = _this3.instance.getData(); // Locking the snapshot prevents the 'change' event.
+          // Trigger it manually to update the bound data.
+
+
+          if (data !== newData) {
+            _this3.$once('input', function () {
+              _this3.$emit('ready', _this3.instance);
+            });
+
+            _this3.$emit('input', newData);
+          } else {
+            _this3.$emit('ready', _this3.instance);
+          }
+
+          _this3.instance.fire('unlockSnapshot');
+        }
+      });
+    },
+    $_setUpEditorEvents: function $_setUpEditorEvents() {
+      var _this4 = this;
+
+      var editor = this.instance;
+      var onChange = (0,ckeditor4_integrations_common__WEBPACK_IMPORTED_MODULE_1__.debounce)(function (evt) {
+        var data = editor.getData(); // Editor#change event might be fired without an actual data change.
+
+        if (_this4.value !== data) {
+          // The compatibility with the v-model and general Vue.js concept of input–like components.
+          _this4.$emit('input', data, evt, editor);
+        }
+      }, this.throttle);
+      editor.on('change', onChange);
+      editor.on('focus', function (evt) {
+        _this4.$emit('focus', evt, editor);
+      });
+      editor.on('blur', function (evt) {
+        _this4.$emit('blur', evt, editor);
+      });
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./resources/js/field.js":
 /*!*******************************!*\
   !*** ./resources/js/field.js ***!
@@ -200,6 +371,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_IndexField__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/IndexField */ "./resources/js/components/IndexField.vue");
 /* harmony import */ var _components_DetailField__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/DetailField */ "./resources/js/components/DetailField.vue");
 /* harmony import */ var _components_FormField__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/FormField */ "./resources/js/components/FormField.vue");
+/* harmony import */ var _components_CKEditor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/CKEditor */ "./resources/js/components/CKEditor.js");
+
 
 
 
@@ -207,6 +380,7 @@ Nova.booting(function (app, store) {
   app.component('index-nova-ckeditor', _components_IndexField__WEBPACK_IMPORTED_MODULE_0__["default"]);
   app.component('detail-nova-ckeditor', _components_DetailField__WEBPACK_IMPORTED_MODULE_1__["default"]);
   app.component('form-nova-ckeditor', _components_FormField__WEBPACK_IMPORTED_MODULE_2__["default"]);
+  app.component('ckeditor', _components_CKEditor__WEBPACK_IMPORTED_MODULE_3__["default"]);
 });
 
 /***/ }),
@@ -1299,19 +1473,119 @@ function mapProps(attributes) {
 
 /***/ }),
 
-/***/ "./node_modules/ckeditor4-vue/dist/ckeditor.js":
-/*!*****************************************************!*\
-  !*** ./node_modules/ckeditor4-vue/dist/ckeditor.js ***!
-  \*****************************************************/
-/***/ ((module) => {
+/***/ "./node_modules/ckeditor4-integrations-common/dist/index.esm.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/ckeditor4-integrations-common/dist/index.esm.js ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-/*! For license information please see ckeditor.js.LICENSE.txt */
-/*!*
- * @license Copyright (c) 2003-2022, CKSource Holding sp. z o.o. All rights reserved.
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "debounce": () => (/* binding */ debounce),
+/* harmony export */   "getEditorNamespace": () => (/* binding */ getEditorNamespace)
+/* harmony export */ });
+/**
+ * @license Copyright (c) 2003-2021, CKSource - Frederico Knabben. All rights reserved.
  * For licensing, see LICENSE.md.
  */
-!function(t,e){ true?module.exports=e():0}(window,(function(){return function(t){var e={};function n(i){if(e[i])return e[i].exports;var r=e[i]={i:i,l:!1,exports:{}};return t[i].call(r.exports,r,r.exports,n),r.l=!0,r.exports}return n.m=t,n.c=e,n.d=function(t,e,i){n.o(t,e)||Object.defineProperty(t,e,{enumerable:!0,get:i})},n.r=function(t){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(t,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(t,"__esModule",{value:!0})},n.t=function(t,e){if(1&e&&(t=n(t)),8&e)return t;if(4&e&&"object"==typeof t&&t&&t.__esModule)return t;var i=Object.create(null);if(n.r(i),Object.defineProperty(i,"default",{enumerable:!0,value:t}),2&e&&"string"!=typeof t)for(var r in t)n.d(i,r,function(e){return t[e]}.bind(null,r));return i},n.n=function(t){var e=t&&t.__esModule?function(){return t.default}:function(){return t};return n.d(e,"a",e),e},n.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},n.p="",n(n.s=0)}([function(t,e,n){t.exports=n(1)},function(t,e,n){"use strict";function i(t,e){t.onload=function(){this.onerror=this.onload=null,e(null,t)},t.onerror=function(){this.onerror=this.onload=null,e(new Error("Failed to load "+this.src),t)}}function r(t,e){t.onreadystatechange=function(){"complete"!=this.readyState&&"loaded"!=this.readyState||(this.onreadystatechange=null,e(null,t))}}var o;function a(t,e){return"CKEDITOR"in window?Promise.resolve(CKEDITOR):"string"!=typeof t||t.length<1?Promise.reject(new TypeError("CKEditor URL must be a non-empty string.")):(o||(o=a.scriptLoader(t).then((function(t){return e&&e(t),t}))),o)}n.r(e),a.scriptLoader=function(t){return new Promise((function(e,n){!function(t,e,n){var o=document.head||document.getElementsByTagName("head")[0],a=document.createElement("script");"function"==typeof e&&(n=e,e={}),e=e||{},n=n||function(){},a.type=e.type||"text/javascript",a.charset=e.charset||"utf8",a.async=!("async"in e)||!!e.async,a.src=t,e.attrs&&function(t,e){for(var n in e)t.setAttribute(n,e[n])}(a,e.attrs),e.text&&(a.text=String(e.text)),("onload"in a?i:r)(a,n),a.onload||i(a,n),o.appendChild(a)}(t,(function(t){return o=void 0,t?n(t):window.CKEDITOR?void e(CKEDITOR):n(new Error("Script loaded from editorUrl doesn't provide CKEDITOR namespace."))}))}))};var s={name:"ckeditor",render(t){return t("div",{},[t(this.tagName)])},props:{value:{type:String,default:""},type:{type:String,default:"classic",validator:t=>["classic","inline"].includes(t)},editorUrl:{type:String,default:"https://cdn.ckeditor.com/4.19.0/standard-all/ckeditor.js"},config:{type:Object,default:()=>{}},tagName:{type:String,default:"textarea"},readOnly:{type:Boolean,default:null},throttle:{type:Number,default:80}},mounted(){a(this.editorUrl,(t=>{this.$emit("namespaceloaded",t)})).then((()=>{if(this.$_destroyed)return;const t=this.prepareConfig(),e="inline"===this.type?"inline":"replace",n=this.$el.firstElementChild;CKEDITOR[e](n,t)}))},beforeDestroy(){this.instance&&this.instance.destroy(),this.$_destroyed=!0},watch:{value(t){this.instance&&this.instance.getData()!==t&&this.instance.setData(t)},readOnly(t){this.instance&&this.instance.setReadOnly(t)}},methods:{prepareConfig(){const t=this.config||{};t.on=t.on||{},void 0===t.delayIfDetached&&(t.delayIfDetached=!0),null!==this.readOnly&&(t.readOnly=this.readOnly);const e=t.on.instanceReady;return t.on.instanceReady=t=>{this.instance=t.editor,this.$nextTick().then((()=>{this.prepareComponentData(),e&&e(t)}))},t},prepareComponentData(){const t=this.value;this.instance.fire("lockSnapshot"),this.instance.setData(t,{callback:()=>{this.$_setUpEditorEvents();const e=this.instance.getData();t!==e?(this.$once("input",(()=>{this.$emit("ready",this.instance)})),this.$emit("input",e)):this.$emit("ready",this.instance),this.instance.fire("unlockSnapshot")}})},$_setUpEditorEvents(){const t=this.instance,e=function(t,e){var n,i=arguments.length>2&&void 0!==arguments[2]?arguments[2]:{};return function(){clearTimeout(n);for(var r=arguments.length,o=new Array(r),a=0;a<r;a++)o[a]=arguments[a];n=setTimeout(t.bind.apply(t,[i].concat(o)),e)}}((e=>{const n=t.getData();this.value!==n&&this.$emit("input",n,e,t)}),this.throttle);t.on("change",e),t.on("focus",(e=>{this.$emit("focus",e,t)})),t.on("blur",(e=>{this.$emit("blur",e,t)}))}}};const c={install(t){t.component("ckeditor",s)},component:s};e.default=c}]).default}));
-//# sourceMappingURL=ckeditor.js.map
+function loadScript (src, opts, cb) {
+  var head = document.head || document.getElementsByTagName('head')[0];
+  var script = document.createElement('script');
+  if (typeof opts === 'function') {
+    cb = opts;
+    opts = {};
+  }
+  opts = opts || {};
+  cb = cb || function () {};
+  script.type = opts.type || 'text/javascript';
+  script.charset = opts.charset || 'utf8';
+  script.async = 'async' in opts ? !!opts.async : true;
+  script.src = src;
+  if (opts.attrs) {
+    setAttributes(script, opts.attrs);
+  }
+  if (opts.text) {
+    script.text = String(opts.text);
+  }
+  var onend = 'onload' in script ? stdOnEnd : ieOnEnd;
+  onend(script, cb);
+  if (!script.onload) {
+    stdOnEnd(script, cb);
+  }
+  head.appendChild(script);
+}
+function setAttributes(script, attrs) {
+  for (var attr in attrs) {
+    script.setAttribute(attr, attrs[attr]);
+  }
+}
+function stdOnEnd(script, cb) {
+  script.onload = function () {
+    this.onerror = this.onload = null;
+    cb(null, script);
+  };
+  script.onerror = function () {
+    this.onerror = this.onload = null;
+    cb(new Error('Failed to load ' + this.src), script);
+  };
+}
+function ieOnEnd(script, cb) {
+  script.onreadystatechange = function () {
+    if (this.readyState != 'complete' && this.readyState != 'loaded') {
+      return;
+    }
+    this.onreadystatechange = null;
+    cb(null, script);
+  };
+}
+
+var promise;
+function getEditorNamespace(editorURL, onNamespaceLoaded) {
+  if ('CKEDITOR' in window) {
+    return Promise.resolve(CKEDITOR);
+  }
+  if (typeof editorURL !== 'string' || editorURL.length < 1) {
+    return Promise.reject(new TypeError('CKEditor URL must be a non-empty string.'));
+  }
+  if (!promise) {
+    promise = getEditorNamespace.scriptLoader(editorURL).then(function (res) {
+      if (onNamespaceLoaded) {
+        onNamespaceLoaded(res);
+      }
+      return res;
+    });
+  }
+  return promise;
+}
+getEditorNamespace.scriptLoader = function (editorURL) {
+  return new Promise(function (scriptResolve, scriptReject) {
+    loadScript(editorURL, function (err) {
+      promise = undefined;
+      if (err) {
+        return scriptReject(err);
+      } else if (!window.CKEDITOR) {
+        return scriptReject(new Error('Script loaded from editorUrl doesn\'t provide CKEDITOR namespace.'));
+      }
+      scriptResolve(CKEDITOR);
+    });
+  });
+};
+
+function debounce(fn, delay) {
+  var context = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+  var cancel;
+  return function () {
+    clearTimeout(cancel);
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+    cancel = setTimeout(fn.bind.apply(fn, [context].concat(args)), delay);
+  };
+}
+
+
+
 
 /***/ }),
 
