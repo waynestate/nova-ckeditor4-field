@@ -208,7 +208,7 @@ __webpack_require__.r(__webpack_exports__);
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.h)('div', {}, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.h)(this.tagName)]);
   },
   props: {
-    value: {
+    modelValue: {
       type: String,
       "default": ''
     },
@@ -266,7 +266,7 @@ __webpack_require__.r(__webpack_exports__);
     this.$_destroyed = true;
   },
   watch: {
-    value: function value(val) {
+    modelValue: function modelValue(val) {
       if (this.instance && this.instance.getData() !== val) {
         this.instance.setData(val);
       }
@@ -311,7 +311,7 @@ __webpack_require__.r(__webpack_exports__);
     prepareComponentData: function prepareComponentData() {
       var _this3 = this;
 
-      var data = this.value;
+      var data = this.modelValue;
       this.instance.fire('lockSnapshot');
       this.instance.setData(data, {
         callback: function callback() {
@@ -342,9 +342,9 @@ __webpack_require__.r(__webpack_exports__);
       var onChange = (0,ckeditor4_integrations_common__WEBPACK_IMPORTED_MODULE_1__.debounce)(function (evt) {
         var data = editor.getData(); // Editor#change event might be fired without an actual data change.
 
-        if (_this4.value !== data) {
+        if (_this4.modelValue !== data) {
           // The compatibility with the v-model and general Vue.js concept of input–like components.
-          _this4.$emit('input', data, evt, editor);
+          _this4.$emit('update:modelValue', data, evt, editor);
         }
       }, this.throttle);
       editor.on('change', onChange);
@@ -377,10 +377,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 Nova.booting(function (app, store) {
+  app.component('ckeditor', _components_CKEditor__WEBPACK_IMPORTED_MODULE_3__["default"]);
   app.component('index-nova-ckeditor', _components_IndexField__WEBPACK_IMPORTED_MODULE_0__["default"]);
   app.component('detail-nova-ckeditor', _components_DetailField__WEBPACK_IMPORTED_MODULE_1__["default"]);
   app.component('form-nova-ckeditor', _components_FormField__WEBPACK_IMPORTED_MODULE_2__["default"]);
-  app.component('ckeditor', _components_CKEditor__WEBPACK_IMPORTED_MODULE_3__["default"]);
 });
 
 /***/ }),
