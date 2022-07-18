@@ -1,6 +1,6 @@
 # Laravel Nova CKEditor 4 Field
 
-This nova package allows you to use [CKEditor 4](https://ckeditor.com/ckeditor-4/) for text areas.
+This nova package allows you to use [CKEditor 4](https://ckeditor.com/ckeditor-4/) for text areas using Nova v4.
 
 ![CKEditor Form Field](docs/form-field.png)
 
@@ -104,6 +104,13 @@ public function fields(Request $request)
 If you wish to not use the CKEditor from the CKEditor CDN, you can change the `ckeditor_url` under `config/nova/ckeditor-field.php` to point to the URL of the CKEditor you wish to use.
 
 If you wish to go the route of a Custom CKEditor Instance using Composer then follow the steps at [Using Composer for Custom CKEditor Instance](https://github.com/waynestate/nova-ckeditor4-field/wiki/Using-Composer-for-Custom-CKEditor-Instance)
+
+### Nova v1, v2, or v3 compatibility
+If you require the use of `nova-ckeditor4-field` using Nova v1, v2 or v3, you can install using version [0.7.0](https://github.com/waynestate/nova-ckeditor4-field/releases/tag/0.7.0)
+
+```bash
+composer require waynestate/nova-ckeditor4-field:"^0.7.0"
+```
 
 ## Contributing
 
