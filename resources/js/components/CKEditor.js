@@ -127,11 +127,7 @@ export default {
                     // Locking the snapshot prevents the 'change' event.
                     // Trigger it manually to update the bound data.
                     if ( data !== newData ) {
-                        this.$once( 'input', () => {
-                            this.$emit( 'ready', this.instance );
-                        } );
-
-                        this.$emit( 'input', newData );
+                        this.$emit( 'update:modelValue', newData );
                     } else {
                         this.$emit( 'ready', this.instance );
                     }
