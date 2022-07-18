@@ -1,5 +1,13 @@
 <template>
-    <PanelItem :index="index" :field="field"></PanelItem>
+    <PanelItem :index="index" :field="field">
+        <template #value>
+            <Excerpt
+                :content="field.value"
+                :plain-text="true"
+                :should-show="field.shouldShow"
+            />
+        </template>
+    </PanelItem>
 </template>
 
 <script>

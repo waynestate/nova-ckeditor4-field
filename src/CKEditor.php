@@ -39,4 +39,16 @@ class CKEditor extends Field
             'options' => array_merge($currentOptions, $options),
         ]);
     }
+
+    /**
+     * Prepare the element for JSON serialization.
+     *
+     * @return array<string, mixed>
+     */
+    public function jsonSerialize(): array
+    {
+        return array_merge(parent::jsonSerialize(), [
+            'shouldShow' => $this->shouldBeExpanded(),
+        ]);
+    }
 }
