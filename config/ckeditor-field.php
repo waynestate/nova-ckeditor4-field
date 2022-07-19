@@ -1,5 +1,19 @@
 <?php
+
 return [
+    /*
+    |--------------------------------------------------------------------------------
+    | CKEditor Model
+    |--------------------------------------------------------------------------------
+    |
+    | The fully qualified class name of models.
+    |
+    | Uncomment the following lines if you wish to use the withFiles feature.
+    */
+
+    //'attachment_model' => \Waynestate\Nova\Models\Attachment::class,
+    //'pending_attachment_model' => \Waynestate\Nova\Models\PendingAttachment::class,
+
     /*
     |--------------------------------------------------------------------------------
     | CKEditor Options
@@ -21,8 +35,8 @@ return [
             ['Link', 'Unlink', 'Anchor'],
             '/',
             ['Format', 'FontSize'],
-            ['Maximize', 'ShowBlocks', '-', 'About']
-        ]
+            ['Maximize', 'ShowBlocks', '-', 'About'],
+        ],
     ],
 
     /*

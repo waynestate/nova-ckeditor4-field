@@ -2,10 +2,15 @@
 
 namespace Waynestate\Nova;
 
-use Laravel\Nova\Fields\Field;
+use Waynestate\Nova\Handlers\DiscardPendingAttachments;
+use Waynestate\Nova\Handlers\StorePendingAttachment;
+use Waynestate\Nova\Models\DeleteAttachments;
+use Waynestate\Nova\Models\DetachAttachment;
 use Laravel\Nova\Fields\Expandable;
+use Laravel\Nova\Fields\Trix;
+use Laravel\Nova\Http\Requests\NovaRequest;
 
-class CKEditor extends Field
+class CKEditor extends Trix
 {
     use Expandable;
 
@@ -52,5 +57,48 @@ class CKEditor extends Field
         return array_merge(parent::jsonSerialize(), [
             'shouldShow' => $this->shouldBeExpanded(),
         ]);
+    }
+
+    /**
+     * @param string|null $disk
+     * @return $this
+     */
+    public function withFiles($disk = null, $path = '/')
+    {
+        $this->withFiles = true;
+
+        $this->disk($disk);
+
+        $this->attach(new StorePendingAttachment($this))
+            ->detach(new DetachAttachment($this))
+            ->delete(new DeleteAttachments($this))
+            ->discard(new DiscardPendingAttachments())
+            ->prunable();
+
+        return $this;
+    }
+
+    /**
+     * Hydrate the given attribute on the model based on the incoming request.
+     *
+     * @param  NovaRequest $request
+     * @param  string $requestAttribute
+     * @param  object $model
+     * @param  string $attribute
+     * @return \Closure|null
+     */
+    protected function fillAttribute(NovaRequest $request, $requestAttribute, $model, $attribute)
+    {
+        parent::fillAttribute($request, $requestAttribute, $model, $attribute);
+
+        if ($request->{$this->attribute.'DraftId'} && $this->withFiles) {
+            return function () use ($request, $model, $attribute) {
+                config('nova.ckeditor-field.pending_attachment_model')::persistDraft(
+                    $request->{$this->attribute.'DraftId'},
+                    $this,
+                    $model
+                );
+            };
+        }
     }
 }
