@@ -6,6 +6,8 @@ This nova package allows you to use [CKEditor 4](https://ckeditor.com/ckeditor-4
 
 ## Installation
 
+[Nova v1, v2, v3 compatibility instructions](https://github.com/waynestate/nova-ckeditor4-field#nova-v1-v2-or-v3-compatibility)
+
 You can install the package into a Laravel application that uses [Nova](https://nova.laravel.com) via composer:
 
 ```bash
