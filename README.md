@@ -102,12 +102,52 @@ public function fields(Request $request)
 }
 ```
 
+### File Uploads
+The `nova-ckeditor4-field` allows the use of file uploads by extending the attachment functionality of the [Trix field](https://nova.laravel.com/docs/4.0/resources/fields.html#trix-file-uploads)
+
+```php
+php artisan vendor:publish --tag=config # Make sure the config file is published
+php artisan vendor:publish --tag=nova-ckeditor4-field-migrations
+php artisan migrate
+```
+
+Within the published `/config/nova/ckeditor-field.php`, uncomment the following lines to use the default Models. If you wish, you could replace with your own:
+```php
+    'attachment_model' => \Waynestate\Nova\Models\Attachment::class,
+    'pending_attachment_model' => \Waynestate\Nova\Models\PendingAttachment::class,
+```
+
+Like the Trix field you'll be able to chain the method `withFiles` onto the field's definition, while passing the name of the filesystem disk where the images should be stored:
+```php
+use Waynestate\Nova\CKEditor;
+
+CKEditor::make('Body')->withFiles('public');
+```
+
+Also to prune any stale attachments from the storage and table, you'll want to register a [job](https://laravel.com/docs/9.x/scheduling#introduction) to run periodically:
+```php
+use Waynestate\Nova\Jobs\PruneStaleAttachments;
+
+/**
+* Define the application's command schedule.
+*
+* @param  \Illuminate\Console\Scheduling\Schedule  $schedule
+* @return void
+*/
+protected function schedule(Schedule $schedule)
+{
+    $schedule->call(function () {
+        (new PruneStaleAttachments)();
+    })->daily();
+}
+```
+
 ### Custom CKEditor Instance
 If you wish to not use the CKEditor from the CKEditor CDN, you can change the `ckeditor_url` under `config/nova/ckeditor-field.php` to point to the URL of the CKEditor you wish to use.
 
 If you wish to go the route of a Custom CKEditor Instance using Composer then follow the steps at [Using Composer for Custom CKEditor Instance](https://github.com/waynestate/nova-ckeditor4-field/wiki/Using-Composer-for-Custom-CKEditor-Instance)
 
-### Nova v1, v2, or v3 compatibility
+## Nova v1, v2, or v3 compatibility
 If you require the use of `nova-ckeditor4-field` using Nova v1, v2 or v3, you can install using version [0.7.0](https://github.com/waynestate/nova-ckeditor4-field/releases/tag/0.7.0)
 
 ```bash

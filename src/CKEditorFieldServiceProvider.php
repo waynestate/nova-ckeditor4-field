@@ -30,6 +30,10 @@ class CKEditorFieldServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/../config/ckeditor-field.php' => config_path('nova/ckeditor-field.php'),
         ], 'config');
+
+        $this->publishes([
+            __DIR__.'/../database/migrations' => database_path('migrations/'),
+        ], 'nova-ckeditor4-field-migrations');
     }
 
     /**
