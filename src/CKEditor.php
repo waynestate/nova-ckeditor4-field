@@ -20,8 +20,10 @@ class CKEditor extends Field
     {
         parent::__construct($name, $attribute, $resolveCallback);
 
+        $defaultConfig = require __DIR__ . '/../config/ckeditor-field.php';
+
         $this->withMeta([
-            'options' => config('nova.ckeditor-field.options', [])
+            'options' => config('nova.ckeditor-field.options', $defaultConfig['options']),
         ]);
     }
 
