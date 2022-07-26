@@ -2,6 +2,7 @@
 
 namespace Waynestate\Nova;
 
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Route;
 use Laravel\Nova\Nova;
 use Laravel\Nova\Events\ServingNova;
@@ -29,10 +30,10 @@ class CKEditorFieldServiceProvider extends ServiceProvider
 
         $this->publishes([
             __DIR__ . '/../config/ckeditor-field.php' => config_path('nova/ckeditor-field.php'),
-        ], 'config');
+        ], 'nova-ckeditor4-field-config');
 
         $this->publishes([
-            __DIR__.'/../database/migrations' => database_path('migrations/'),
+            __DIR__.'/../database/migrations/create_ckeditor_attachment_tables.php' => database_path('migrations/'.Carbon::now()->format('Y_m_d_His').'_create_ckeditor_attachment_tables.php'),
         ], 'nova-ckeditor4-field-migrations');
     }
 

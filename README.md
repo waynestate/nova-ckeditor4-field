@@ -47,7 +47,7 @@ class Article extends Resource
 To change any of config values, publish a config file:
 
 ```bash
-php artisan vendor:publish --tag=config --provider="Waynestate\Nova\CKEditorFieldServiceProvider"
+php artisan vendor:publish --tag=nova-ckeditor4-field-config
 ```
 
 ## Customization
@@ -105,13 +105,13 @@ public function fields(Request $request)
 ### File Uploads
 The `nova-ckeditor4-field` allows the use of file uploads by extending the attachment functionality of the [Trix field](https://nova.laravel.com/docs/4.0/resources/fields.html#trix-file-uploads)
 
-```php
-php artisan vendor:publish --tag=config # Make sure the config file is published
+```bash
+php artisan vendor:publish --tag=nova-ckeditor4-field-config # Make sure the config file is published
 php artisan vendor:publish --tag=nova-ckeditor4-field-migrations
 php artisan migrate
 ```
 
-Within the published `/config/nova/ckeditor-field.php`, uncomment the following lines to use the default Models. If you wish, you could replace with your own:
+Within the published `/config/nova/ckeditor-field.php`, if you wish to not use the default `Attachment` and/or `PendingAttachment` models. You could replace with your own:
 ```php
     'attachment_model' => \Waynestate\Nova\Models\Attachment::class,
     'pending_attachment_model' => \Waynestate\Nova\Models\PendingAttachment::class,

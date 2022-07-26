@@ -3,19 +3,6 @@
 return [
     /*
     |--------------------------------------------------------------------------------
-    | CKEditor Model
-    |--------------------------------------------------------------------------------
-    |
-    | The fully qualified class name of models.
-    |
-    | Uncomment the following lines if you wish to use the withFiles feature.
-    */
-
-    //'attachment_model' => \Waynestate\Nova\Models\Attachment::class,
-    //'pending_attachment_model' => \Waynestate\Nova\Models\PendingAttachment::class,
-
-    /*
-    |--------------------------------------------------------------------------------
     | CKEditor Options
     |--------------------------------------------------------------------------------
     |
@@ -38,6 +25,21 @@ return [
             ['Maximize', 'ShowBlocks', '-', 'About'],
         ],
     ],
+
+    /*
+    |--------------------------------------------------------------------------------
+    | CKEditor Attachment Models
+    |--------------------------------------------------------------------------------
+    |
+    | The fully qualified class name of models that are used for attachments, such as images.
+    | To use attachments you can set up the file store by appending withFiles() to the Nova Resource.
+    |
+    | Example: CKEditor::make('Body')->withFiles('public')
+    |
+    */
+
+    'attachment_model' => \Waynestate\Nova\Models\Attachment::class,
+    'pending_attachment_model' => \Waynestate\Nova\Models\PendingAttachment::class,
 
     /*
     |--------------------------------------------------------------------------------
