@@ -43,7 +43,7 @@ class CKEditor extends Trix
         $currentOptions = $this->meta['options'] ?? [];
 
         return $this->withMeta([
-            'options' => array_merge($currentOptions, $options),
+            'options' => array_merge_recursive($currentOptions, $options),
         ]);
     }
 
@@ -66,6 +66,8 @@ class CKEditor extends Trix
     public function withFiles($disk = null, $path = '/')
     {
         $this->withFiles = true;
+
+        $this->setFilesPlugins();
 
         $this->disk($disk);
 
@@ -99,6 +101,34 @@ class CKEditor extends Trix
                     $model
                 );
             };
+        }
+    }
+
+    /**
+     * If they already have the extraPlugins set in the config, we need to make sure that the plugins required are added.
+     *
+     * @return void
+     */
+    protected function setFilesPlugins()
+    {
+        if(!empty($this->meta['options']['extraPlugins'])) {
+            $extraPlugins = explode(',', preg_replace('/\s+/', '', $this->meta['options']['extraPlugins']));
+
+            if(!in_array('uploadimage', $extraPlugins)) {
+                $extraPlugins[] = 'uploadimage';
+            }
+
+            if(!in_array('image2', $extraPlugins)) {
+                $extraPlugins[] = 'image2';
+            }
+
+            $this->withMeta([
+                'options' => [
+                    'extraPlugins' => implode(',', $extraPlugins),
+                ],
+            ]);
+        }else{
+            $this->meta['options']['extraPlugins'] = 'uploadimage,image2';
         }
     }
 }
