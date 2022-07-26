@@ -1,6 +1,6 @@
 <?php
 
-namespace Waynestate\Nova;
+namespace Waynestate\Nova\CKEditor4Field;
 
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Route;
@@ -8,7 +8,7 @@ use Laravel\Nova\Nova;
 use Laravel\Nova\Events\ServingNova;
 use Illuminate\Support\ServiceProvider;
 
-class CKEditorFieldServiceProvider extends ServiceProvider
+class CKEditor4FieldServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap any application services.
@@ -49,7 +49,7 @@ class CKEditorFieldServiceProvider extends ServiceProvider
         }
 
         Route::middleware(['nova'])
-            ->prefix('nova-vendor/ckeditor4-field')
+            ->prefix('nova-vendor/nova-ckeditor4')
             ->group(__DIR__.'/../routes/api.php');
     }
 

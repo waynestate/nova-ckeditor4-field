@@ -1,6 +1,6 @@
 <?php
 
-namespace Waynestate\Nova\Jobs;
+namespace Waynestate\Nova\CKEditor4Field\Jobs;
 
 class PruneStaleAttachments
 {

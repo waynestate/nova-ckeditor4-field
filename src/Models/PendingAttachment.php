@@ -1,10 +1,10 @@
 <?php
 
-namespace Waynestate\Nova\Models;
+namespace Waynestate\Nova\CKEditor4Field\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
-use Waynestate\Nova\CKEditor;
+use Waynestate\Nova\CKEditor4Field\CKEditor;
 
 class PendingAttachment extends Model
 {

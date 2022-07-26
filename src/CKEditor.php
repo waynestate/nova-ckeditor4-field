@@ -1,11 +1,11 @@
 <?php
 
-namespace Waynestate\Nova;
+namespace Waynestate\Nova\CKEditor4Field;
 
-use Waynestate\Nova\Handlers\DiscardPendingAttachments;
-use Waynestate\Nova\Handlers\StorePendingAttachment;
-use Waynestate\Nova\Models\DeleteAttachments;
-use Waynestate\Nova\Models\DetachAttachment;
+use Waynestate\Nova\CKEditor4Field\Handlers\DiscardPendingAttachments;
+use Waynestate\Nova\CKEditor4Field\Handlers\StorePendingAttachment;
+use Waynestate\Nova\CKEditor4Field\Models\DeleteAttachments;
+use Waynestate\Nova\CKEditor4Field\Models\DetachAttachment;
 use Laravel\Nova\Fields\Expandable;
 use Laravel\Nova\Fields\Trix;
 use Laravel\Nova\Http\Requests\NovaRequest;
@@ -19,7 +19,7 @@ class CKEditor extends Trix
      *
      * @var string
      */
-    public $component = 'nova-ckeditor';
+    public $component = 'nova-ckeditor4';
 
     public function __construct($name, $attribute = null, $resolveCallback = null)
     {
@@ -111,15 +111,11 @@ class CKEditor extends Trix
      */
     protected function setFilesPlugins()
     {
-        if(!empty($this->meta['options']['extraPlugins'])) {
+        if (!empty($this->meta['options']['extraPlugins'])) {
             $extraPlugins = explode(',', preg_replace('/\s+/', '', $this->meta['options']['extraPlugins']));
 
-            if(!in_array('uploadimage', $extraPlugins)) {
+            if (!in_array('uploadimage', $extraPlugins)) {
                 $extraPlugins[] = 'uploadimage';
-            }
-
-            if(!in_array('image2', $extraPlugins)) {
-                $extraPlugins[] = 'image2';
             }
 
             $this->withMeta([
@@ -127,8 +123,8 @@ class CKEditor extends Trix
                     'extraPlugins' => implode(',', $extraPlugins),
                 ],
             ]);
-        }else{
-            $this->meta['options']['extraPlugins'] = 'uploadimage,image2';
+        } else {
+            $this->meta['options']['extraPlugins'] = 'uploadimage';
         }
     }
 }

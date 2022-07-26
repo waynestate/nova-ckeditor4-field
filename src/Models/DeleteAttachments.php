@@ -1,6 +1,6 @@
 <?php
 
-namespace Waynestate\Nova\Models;
+namespace Waynestate\Nova\CKEditor4Field\Models;
 
 use Illuminate\Http\Request;
 
@@ -9,14 +9,14 @@ class DeleteAttachments
     /**
      * The field instance.
      *
-     * @var \Waynestate\Nova\Fields\CKEditor
+     * @var \Waynestate\Nova\CKEditor4Field\Fields\CKEditor
      */
     public $field;
 
     /**
      * Create a new class instance.
      *
-     * @param  \Waynestate\Nova\Fields\CKEditor $field
+     * @param  \Waynestate\Nova\CKEditor4Field\Fields\CKEditor $field
      * @return void
      */
     public function __construct($field)

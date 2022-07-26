@@ -19,15 +19,20 @@
     },
     "autoload": {
         "psr-4": {
-            "Waynestate\\Nova\\": "src/"
+            "Waynestate\\Nova\\CKEditor4Field\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Waynestate\\Nova\\CKEditorFieldServiceProvider"
+                "Waynestate\\Nova\\CKEditor4Field\\CKEditor4FieldServiceProvider"
             ]
         }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "chmod +x php-cs-fixer-script.sh && ./php-cs-fixer-script.sh"
+        ]
     },
     "config": {
         "sort-packages": true

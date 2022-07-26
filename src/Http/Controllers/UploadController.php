@@ -1,6 +1,6 @@
 <?php
 
-namespace Waynestate\Nova\Http\Controllers;
+namespace Waynestate\Nova\CKEditor4Field\Http\Controllers;
 
 use Illuminate\Routing\Controller;
 use Laravel\Nova\Http\Requests\NovaRequest;

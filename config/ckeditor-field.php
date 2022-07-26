@@ -38,8 +38,8 @@ return [
     |
     */
 
-    'attachment_model' => \Waynestate\Nova\Models\Attachment::class,
-    'pending_attachment_model' => \Waynestate\Nova\Models\PendingAttachment::class,
+    'attachment_model' => \Waynestate\Nova\CKEditor4Field\Models\Attachment::class,
+    'pending_attachment_model' => \Waynestate\Nova\CKEditor4Field\Models\PendingAttachment::class,
 
     /*
     |--------------------------------------------------------------------------------

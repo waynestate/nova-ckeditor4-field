@@ -1,6 +1,6 @@
 <?php
 
-namespace Waynestate\Nova\Handlers;
+namespace Waynestate\Nova\CKEditor4Field\Handlers;
 
 use Illuminate\Http\Request;
 

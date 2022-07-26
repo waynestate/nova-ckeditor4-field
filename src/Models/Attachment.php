@@ -1,6 +1,6 @@
 <?php
 
-namespace Waynestate\Nova\Models;
+namespace Waynestate\Nova\CKEditor4Field\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;

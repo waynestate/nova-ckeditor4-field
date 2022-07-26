@@ -23,7 +23,7 @@ By default the CKEditor 4 instance used is the latest (4.19.0) Full All version 
 
 namespace App\Nova;
 
-use Waynestate\Nova\CKEditor;
+use Waynestate\Nova\CKEditor4Field\CKEditor;
 
 class Article extends Resource
 {
@@ -113,20 +113,23 @@ php artisan migrate
 
 Within the published `/config/nova/ckeditor-field.php`, if you wish to not use the default `Attachment` and/or `PendingAttachment` models. You could replace with your own:
 ```php
-    'attachment_model' => \Waynestate\Nova\Models\Attachment::class,
-    'pending_attachment_model' => \Waynestate\Nova\Models\PendingAttachment::class,
+    'attachment_model' => \Waynestate\Nova\CKEditor4Field\Models\Attachment::class,
+    'pending_attachment_model' => \Waynestate\Nova\CKEditor4Field\Models\PendingAttachment::class,
 ```
+
+Using the File Uploads feature **requires** that the CKEditor uses the plugins [Enhanced Image (image2)](https://ckeditor.com/cke4/addon/image2) and [UploadImage](https://ckeditor.com/cke4/addon/uploadimage).
+If they are not included within your configuration, they will be added automatically.
 
 Like the Trix field you'll be able to chain the method `withFiles` onto the field's definition, while passing the name of the filesystem disk where the images should be stored:
 ```php
-use Waynestate\Nova\CKEditor;
+use Waynestate\Nova\CKEditor4Field\CKEditor;
 
 CKEditor::make('Body')->withFiles('public');
 ```
 
 Also to prune any stale attachments from the storage and table, you'll want to register a [job](https://laravel.com/docs/9.x/scheduling#introduction) to run periodically:
 ```php
-use Waynestate\Nova\Jobs\PruneStaleAttachments;
+use Waynestate\Nova\CKEditor4Field\Jobs\PruneStaleAttachments;
 
 /**
 * Define the application's command schedule.

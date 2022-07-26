@@ -1,13 +1,13 @@
 <?php
 
-namespace Waynestate\Nova\Handlers;
+namespace Waynestate\Nova\CKEditor4Field\Handlers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-use Waynestate\Nova\CKEditor;
+use Waynestate\Nova\CKEditor4Field\CKEditor;
 
 class StorePendingAttachment
 {
@@ -38,13 +38,13 @@ class StorePendingAttachment
      */
     public function __invoke(Request $request)
     {
-        $filename = $this->generateFilename($request->attachment);
+        $filename = $this->generateFilename($request->upload);
 
         $this->abortIfFileNameExists($filename);
 
         $attachment = config('nova.ckeditor-field.pending_attachment_model')::create([
             'draft_id' => $request->draftId,
-            'attachment' => $request->attachment->storeAs(
+            'attachment' => $request->upload->storeAs(
                 self::STORAGE_PATH,
                 $filename,
                 $this->field->disk
