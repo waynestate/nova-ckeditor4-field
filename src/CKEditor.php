@@ -124,7 +124,11 @@ class CKEditor extends Trix
                 ],
             ]);
         } else {
-            $this->meta['options']['extraPlugins'] = 'uploadimage';
+            $this->withMeta([
+                'options' => [
+                    'extraPlugins' => 'uploadimage',
+                ],
+            ]);
         }
     }
 }
