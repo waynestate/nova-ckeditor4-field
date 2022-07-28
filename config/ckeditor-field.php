@@ -65,5 +65,5 @@ return [
     | CKEditor 4 is only supported. This will not work with CKEditor 5
     |
     */
-    'ckeditor_url' => 'https://cdn.ckeditor.com/4.19.0/full-all/ckeditor.js',
+    'ckeditor_url' => 'https://cdn.ckeditor.com/4.19.1/standard/ckeditor.js',
 ];
