@@ -145,6 +145,9 @@ protected function schedule(Schedule $schedule)
 }
 ```
 
+#### Limitations using File Uploads
+Images are not removed from the filesystem when they are removed from the editor. For the time being you'll need to rectrify this on your own.
+
 ### Custom CKEditor Instance
 If you wish to not use the CKEditor from the CKEditor CDN, you can change the `ckeditor_url` under `config/nova/ckeditor-field.php` to point to the URL of the CKEditor you wish to use.
 
