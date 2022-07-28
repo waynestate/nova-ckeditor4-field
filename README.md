@@ -2,7 +2,7 @@
 
 This nova package allows you to use [CKEditor 4](https://ckeditor.com/ckeditor-4/) for text areas using Nova v4.
 
-![CKEditor Form Field](docs/form-field.png)
+![CKEditor Form Field](docs/form-field.jpg)
 
 ## Installation
 
