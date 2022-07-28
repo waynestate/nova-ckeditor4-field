@@ -1,4 +1,5 @@
 <?php
+
 return [
     /*
     |--------------------------------------------------------------------------------
@@ -21,9 +22,24 @@ return [
             ['Link', 'Unlink', 'Anchor'],
             '/',
             ['Format', 'FontSize'],
-            ['Maximize', 'ShowBlocks', '-', 'About']
-        ]
+            ['Maximize', 'ShowBlocks', '-', 'About'],
+        ],
     ],
+
+    /*
+    |--------------------------------------------------------------------------------
+    | CKEditor Attachment Models
+    |--------------------------------------------------------------------------------
+    |
+    | The fully qualified class name of models that are used for attachments, such as images.
+    | To use attachments you can set up the file store by appending withFiles() to the Nova Resource.
+    |
+    | Example: CKEditor::make('Body')->withFiles('public')
+    |
+    */
+
+    'attachment_model' => \Waynestate\Nova\CKEditor4Field\Models\Attachment::class,
+    'pending_attachment_model' => \Waynestate\Nova\CKEditor4Field\Models\PendingAttachment::class,
 
     /*
     |--------------------------------------------------------------------------------

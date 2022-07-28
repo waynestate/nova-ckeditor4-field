@@ -1,11 +1,16 @@
 <?php
 
-namespace Waynestate\Nova;
+namespace Waynestate\Nova\CKEditor4Field;
 
-use Laravel\Nova\Fields\Field;
+use Waynestate\Nova\CKEditor4Field\Handlers\DiscardPendingAttachments;
+use Waynestate\Nova\CKEditor4Field\Handlers\StorePendingAttachment;
+use Waynestate\Nova\CKEditor4Field\Models\DeleteAttachments;
+use Waynestate\Nova\CKEditor4Field\Models\DetachAttachment;
 use Laravel\Nova\Fields\Expandable;
+use Laravel\Nova\Fields\Trix;
+use Laravel\Nova\Http\Requests\NovaRequest;
 
-class CKEditor extends Field
+class CKEditor extends Trix
 {
     use Expandable;
 
@@ -14,7 +19,7 @@ class CKEditor extends Field
      *
      * @var string
      */
-    public $component = 'nova-ckeditor';
+    public $component = 'nova-ckeditor4';
 
     public function __construct($name, $attribute = null, $resolveCallback = null)
     {
@@ -38,7 +43,7 @@ class CKEditor extends Field
         $currentOptions = $this->meta['options'] ?? [];
 
         return $this->withMeta([
-            'options' => array_merge($currentOptions, $options),
+            'options' => array_merge_recursive($currentOptions, $options),
         ]);
     }
 
@@ -52,5 +57,78 @@ class CKEditor extends Field
         return array_merge(parent::jsonSerialize(), [
             'shouldShow' => $this->shouldBeExpanded(),
         ]);
+    }
+
+    /**
+     * @param string|null $disk
+     * @return $this
+     */
+    public function withFiles($disk = null, $path = '/')
+    {
+        $this->withFiles = true;
+
+        $this->setFilesPlugins();
+
+        $this->disk($disk);
+
+        $this->attach(new StorePendingAttachment($this))
+            ->detach(new DetachAttachment($this))
+            ->delete(new DeleteAttachments($this))
+            ->discard(new DiscardPendingAttachments())
+            ->prunable();
+
+        return $this;
+    }
+
+    /**
+     * Hydrate the given attribute on the model based on the incoming request.
+     *
+     * @param  NovaRequest $request
+     * @param  string $requestAttribute
+     * @param  object $model
+     * @param  string $attribute
+     * @return \Closure|null
+     */
+    protected function fillAttribute(NovaRequest $request, $requestAttribute, $model, $attribute)
+    {
+        parent::fillAttribute($request, $requestAttribute, $model, $attribute);
+
+        if ($request->{$this->attribute.'DraftId'} && $this->withFiles) {
+            return function () use ($request, $model, $attribute) {
+                config('nova.ckeditor-field.pending_attachment_model')::persistDraft(
+                    $request->{$this->attribute.'DraftId'},
+                    $this,
+                    $model
+                );
+            };
+        }
+    }
+
+    /**
+     * If they already have the extraPlugins set in the config, we need to make sure that the plugins required are added.
+     *
+     * @return void
+     */
+    protected function setFilesPlugins()
+    {
+        if (!empty($this->meta['options']['extraPlugins'])) {
+            $extraPlugins = explode(',', preg_replace('/\s+/', '', $this->meta['options']['extraPlugins']));
+
+            if (!in_array('uploadimage', $extraPlugins)) {
+                $extraPlugins[] = 'uploadimage';
+            }
+
+            $this->withMeta([
+                'options' => [
+                    'extraPlugins' => implode(',', $extraPlugins),
+                ],
+            ]);
+        } else {
+            $this->withMeta([
+                'options' => [
+                    'extraPlugins' => 'uploadimage',
+                ],
+            ]);
+        }
     }
 }
