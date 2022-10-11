@@ -162,10 +162,14 @@ If you require the use of `nova-ckeditor4-field` using Nova v1, v2 or v3, you ca
 composer require waynestate/nova-ckeditor4-field:"^0.7.0"
 ```
 
-## Contributing
+## Changelog
+Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
 
+## Contributing
 Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
-## License
+## Security
+If you discover any security related issues, please email web@wayne.edu instead of using the issue tracker.
 
+## License
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
