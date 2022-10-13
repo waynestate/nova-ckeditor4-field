@@ -118,16 +118,12 @@ class CKEditor extends Trix
                 $extraPlugins[] = 'uploadimage';
             }
 
-            $this->withMeta([
-                'options' => [
-                    'extraPlugins' => implode(',', $extraPlugins),
-                ],
+            $this->options([
+                'extraPlugins' => implode(',', $extraPlugins),
             ]);
         } else {
-            $this->withMeta([
-                'options' => [
-                    'extraPlugins' => 'uploadimage',
-                ],
+            $this->options([
+                'extraPlugins' => 'uploadimage',
             ]);
         }
     }
