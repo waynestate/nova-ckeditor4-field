@@ -1,6 +1,7 @@
 # Laravel Nova CKEditor 4 Field
- 
-[![Daily Downloads](http://poser.pugx.org/waynestate/nova-ckeditor4-field/d/daily)](https://packagist.org/packages/waynestate/nova-ckeditor4-field)
+
+[![Latest Stable Version](http://poser.pugx.org/waynestate/nova-ckeditor4-field/v)](https://packagist.org/packages/waynestate/nova-ckeditor4-field) [![Daily Downloads](http://poser.pugx.org/waynestate/nova-ckeditor4-field/d/daily)](https://packagist.org/packages/waynestate/nova-ckeditor4-field)
+[![Total Downloads](http://poser.pugx.org/waynestate/nova-ckeditor4-field/downloads)](https://packagist.org/packages/waynestate/nova-ckeditor4-field) [![Latest Unstable Version](http://poser.pugx.org/waynestate/nova-ckeditor4-field/v/unstable)](https://packagist.org/packages/waynestate/nova-ckeditor4-field) [![License](http://poser.pugx.org/waynestate/nova-ckeditor4-field/license)](https://packagist.org/packages/waynestate/nova-ckeditor4-field) [![PHP Version Require](http://poser.pugx.org/waynestate/nova-ckeditor4-field/require/php)](https://packagist.org/packages/waynestate/nova-ckeditor4-field) 
 
 This nova package allows you to use [CKEditor 4](https://ckeditor.com/ckeditor-4/) for text areas using Nova v4.
 
