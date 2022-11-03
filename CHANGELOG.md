@@ -3,10 +3,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [1.2.0] - 2022-11-03
 ### Changed
 * Renamed the migration to include a timestamp to ensure only one migration is created.
-* Updated README.md
+* Updated README.md to include the new migration options.
+* Updated CKEditor4 from v4.19.1 to v4.20.0
 
 ### Added
 * Added new `enable_migrations` option to the config file to allow for the disabling of the migrations.
