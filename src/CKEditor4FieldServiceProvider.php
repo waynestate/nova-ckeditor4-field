@@ -32,9 +32,7 @@ class CKEditor4FieldServiceProvider extends ServiceProvider
             __DIR__ . '/../config/ckeditor-field.php' => config_path('nova/ckeditor-field.php'),
         ], 'nova-ckeditor4-field-config');
 
-        $this->publishes([
-            __DIR__.'/../database/migrations/create_ckeditor_attachment_tables.php' => database_path('migrations/'.Carbon::now()->format('Y_m_d_His').'_create_ckeditor_attachment_tables.php'),
-        ], 'nova-ckeditor4-field-migrations');
+        $this->handleMigrations();
     }
 
     /**
@@ -61,5 +59,26 @@ class CKEditor4FieldServiceProvider extends ServiceProvider
     public function register()
     {
         //
+    }
+
+    /**
+     * Handle the migration strategy.
+     *
+     * @return void
+     */
+    protected function handleMigrations()
+    {
+        $migrations = config('nova.ckeditor-field.migrations', []);
+        if (empty($migrations['enable_migrations'])) {
+            return;
+        }
+
+        if (!empty($migrations['auto_migrate'])) {
+            $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+        } else {
+            $this->publishes([
+                __DIR__ . '/../database/migrations' => database_path('migrations'),
+            ], 'nova-ckeditor4-field-migrations');
+        }
     }
 }

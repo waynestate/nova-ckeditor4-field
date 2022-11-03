@@ -110,11 +110,33 @@ The `nova-ckeditor4-field` allows the use of file uploads by extending the attac
 
 ```bash
 php artisan vendor:publish --tag=nova-ckeditor4-field-config # Make sure the config file is published
-php artisan vendor:publish --tag=nova-ckeditor4-field-migrations
-php artisan migrate
+php artisan migrate # Run the migrations
 ```
 
-Within the published `/config/nova/ckeditor-field.php`, if you wish to not use the default `Attachment` and/or `PendingAttachment` models. You could replace with your own:
+The package migrations will automatically run when running `php artisan migrate`.
+
+If you are not going to use the Files and have no need for the migrations, you can disable migrations in `config/nova/ckeditor-field.php`, set the `enable_migrations` to `false`.
+```php
+    'migrations' => [
+        'enable_migrations' => false,
+        // ...
+    ],
+```
+
+If you wish do not wish to use the [Laravel Migration](https://laravel.com/docs/9.x/packages#migrations), but publish the migration yourself to your project.
+Within the published `/config/nova/ckeditor-field.php`, set the `auto_migration` to `false`.
+```php
+    'migrations' => [
+        'enable_migrations' => true,
+        'auto_migrate' => false,
+    ],
+```
+and then publish the migration to your project.
+```php
+php artisan vendor:publish --tag=nova-ckeditor4-field-migrations
+```
+
+if you wish to not use the default `Attachment` and/or `PendingAttachment` models. You could replace with your own within the published `/config/nova/ckeditor-field.php`, 
 ```php
     'attachment_model' => \Waynestate\Nova\CKEditor4Field\Models\Attachment::class,
     'pending_attachment_model' => \Waynestate\Nova\CKEditor4Field\Models\PendingAttachment::class,

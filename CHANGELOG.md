@@ -3,6 +3,16 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+### Changed
+* Renamed the migration to include a timestamp to ensure only one migration is created.
+* Updated README.md
+
+### Added
+* Added new `enable_migrations` option to the config file to allow for the disabling of the migrations.
+* Added new `auto_migrate` option to the config file to allow for the disabling of the automatic running of the migrations.
+* Added new UPGRADE.md for upgrade instructions.
+
 ## [1.1.4] - 2022-11-02
 ### Fixed
 * Add check for migrations to make sure the table doesn't exist before trying to create it. by @chrispelzer in https://github.com/waynestate/nova-ckeditor4-field/pull/68 https://github.com/waynestate/nova-ckeditor4-field/issues/67
