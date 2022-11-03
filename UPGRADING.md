@@ -27,7 +27,5 @@ You can review the changes at https://github.com/ckeditor/ckeditor4-releases/blo
 
 If you have a published config and wish to use the new version, you will need to update the `ckeditor_url` option within your published `/config/nova/ckeditor-field.php`.
 ```php
-    'ckeditor' => [
-        'ckeditor_url' => 'https://cdn.ckeditor.com/4.20.0/full-all/ckeditor.js',
-    ],
+    'ckeditor_url' => 'https://cdn.ckeditor.com/4.20.0/full-all/ckeditor.js',
 ```
