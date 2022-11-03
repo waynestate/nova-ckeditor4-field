@@ -1,5 +1,6 @@
 ## From v1.1.4 to v1.2.0
 
+### Migrations
 Added support for Laravel loadMigrationsFrom to allow for migrations to be handled without needing to publish them.
 
 Previous versions the migration was being published with the timestamp of the time of publishing which caused multiple migrations to be published.
@@ -18,4 +19,15 @@ It is possible that you could have multiple migrations if you have previously pu
 If this is the case, you will need to manually delete the migrations that were published before this update and republish the migrations.
 ```php
 php artisan vendor:publish --tag=nova-ckeditor4-field-migrations
+```
+
+### CKEditor version
+Updated the CKEditor4 version from 4.19.1 to 4.20.0 as the default version.
+You can review the changes at https://github.com/ckeditor/ckeditor4-releases/blob/master/CHANGES.md#ckeditor-420
+
+If you have a published config and wish to use the new version, you will need to update the `ckeditor_url` option within your published `/config/nova/ckeditor-field.php`.
+```php
+    'ckeditor' => [
+        'ckeditor_url' => 'https://cdn.ckeditor.com/4.20.0/full-all/ckeditor.js',
+    ],
 ```
