@@ -115,10 +115,19 @@ php artisan migrate # Run the migrations
 
 The package migrations will automatically run when running `php artisan migrate`.
 
+If you are not going to use the Files and have no need for the migrations, you can disable migrations in `config/nova/ckeditor-field.php`, set the `enable_migrations` to `false`.
+```php
+    'migrations' => [
+        'enable_migrations' => false,
+        // ...
+    ],
+```
+
 If you wish do not wish to use the [Laravel Migration](https://laravel.com/docs/9.x/packages#migrations), but publish the migration yourself to your project.
 Within the published `/config/nova/ckeditor-field.php`, set the `auto_migration` to `false`.
 ```php
     'migrations' => [
+        'enable_migrations' => true,
         'auto_migrate' => false,
     ],
 ```
