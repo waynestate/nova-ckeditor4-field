@@ -43,6 +43,19 @@ return [
 
     /*
     |--------------------------------------------------------------------------------
+    | Migrations
+    |--------------------------------------------------------------------------------
+    |
+    | By default, the migrations will be automatically run when using `php artisan migrate`
+    | If you would like to disable this, set the value to false.
+    |
+    */
+    'migrations' => [
+        'auto_migrate' => true,
+    ],
+
+    /*
+    |--------------------------------------------------------------------------------
     | CKEditor 4 Javascript URL
     |--------------------------------------------------------------------------------
     |
