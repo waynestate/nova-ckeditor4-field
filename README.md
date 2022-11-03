@@ -123,8 +123,8 @@ If you are not going to use the Files and have no need for the migrations, you c
     ],
 ```
 
-If you wish do not wish to use the [Laravel Migration](https://laravel.com/docs/9.x/packages#migrations), but publish the migration yourself to your project.
-Within the published `/config/nova/ckeditor-field.php`, set the `auto_migration` to `false`.
+If you do not wish to use the [Laravel Migration](https://laravel.com/docs/9.x/packages#migrations), but publish the migration yourself to your project.
+Within the published `/config/nova/ckeditor-field.php`, set the `auto_migrate` to `false`.
 ```php
     'migrations' => [
         'enable_migrations' => true,
