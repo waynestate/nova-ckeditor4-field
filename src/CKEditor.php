@@ -118,12 +118,16 @@ class CKEditor extends Trix
                 $extraPlugins[] = 'uploadimage';
             }
 
+            if (!in_array('image2', $extraPlugins)) {
+                $extraPlugins[] = 'image2';
+            }
+
             $this->options([
                 'extraPlugins' => implode(',', $extraPlugins),
             ]);
         } else {
             $this->options([
-                'extraPlugins' => 'uploadimage',
+                'extraPlugins' => 'image2,uploadimage',
             ]);
         }
     }
