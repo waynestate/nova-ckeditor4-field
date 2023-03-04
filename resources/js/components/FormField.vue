@@ -26,6 +26,8 @@
                 let token = document.head.querySelector('meta[name="csrf-token"]').content
                 this.field.options.uploadUrl =
                    `/nova-vendor/nova-ckeditor4/${this.resourceName}/upload/${this.field.attribute}?_token=${token}&draftId=${draftId}`;
+                this.field.options.filebrowserUploadUrl =
+                    `/nova-vendor/nova-ckeditor4/${this.resourceName}/upload/${this.field.attribute}?_token=${token}&draftId=${draftId}`;
             }
 
             return {
