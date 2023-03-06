@@ -45,6 +45,10 @@ export default {
         throttle: {
             type: Number,
             default: 80
+        },
+        withDragAndDrop: {
+            type: Boolean,
+            default: true
         }
     },
 
@@ -157,6 +161,16 @@ export default {
             editor.on( 'blur', evt => {
                 this.$emit( 'blur', evt, editor );
             } );
+
+            if(this.withDragAndDrop === false) {
+                editor.on('contentDom', function () {
+
+                    editor.document.on('drop', (event) => {
+                        console.log('drop: drag and drop disabled');
+                        event.data.preventDefault(true);
+                    });
+                });
+            }
         }
     }
 };

@@ -33,6 +33,7 @@
             return {
                 config: this.field.options,
                 draftId: draftId,
+                dragAndDrop: this.field.withDragAndDrop,
             }
         },
 

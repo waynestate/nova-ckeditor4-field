@@ -80,6 +80,13 @@ class CKEditor extends Trix
         return $this;
     }
 
+    public function withDragAndDrop($dragAndDrop = true)
+    {
+        return $this->withMeta([
+            'dragAndDrop' => true,
+        ]);
+    }
+
     /**
      * Hydrate the given attribute on the model based on the incoming request.
      *
