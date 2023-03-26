@@ -3,6 +3,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [1.2.2] - 2023-03-26
+### Fixed
+* Fixed possible caching issue for users who already loaded a previous nova-ckeditor4-field version, causing their cached script not being updated when the package is updated.
+
+### Changed
+* Set the `filebrowserUploadUrl` which will allow the Upload tab to show under the Images dialog box in https://github.com/waynestate/nova-ckeditor4-field/issues/84
+
 ## [1.2.1] - 2022-11-03
 ### Fixed
 * Fixed issue with no user configuration is present that the image2 plugin wasn't being added to the extra plugins in https://github.com/waynestate/nova-ckeditor4-field/pull/82/files
