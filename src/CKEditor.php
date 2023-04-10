@@ -43,7 +43,7 @@ class CKEditor extends Trix
         $currentOptions = $this->meta['options'] ?? [];
 
         return $this->withMeta([
-            'options' => array_merge_recursive($currentOptions, $options),
+            'options' => array_merge($currentOptions, $options),
         ]);
     }
 
