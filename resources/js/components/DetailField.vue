@@ -3,7 +3,7 @@
         <template #value>
             <Excerpt
                 :content="field.value"
-                :plain-text="true"
+                :plain-text="false"
                 :should-show="field.shouldShow"
             />
         </template>
