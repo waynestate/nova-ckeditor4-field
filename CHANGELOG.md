@@ -3,6 +3,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [1.2.4] - 2023-10-18
+### Fixed
+* Fix formatting on the Detail View to prevent `whitespace-pre-wrap` class from being applied https://github.com/waynestate/nova-ckeditor4-field/pull/91
+* Fix issue when saving the field when on the Source view mode rather than the WYSIWYG mode, onChange events weren't being properly fired causing saving changes from not being saved. https://github.com/waynestate/nova-ckeditor4-field/pull/92
+
+### Changed
+* Updated CKEditor4 from 4.21.0 to 4.22.1
+
 ## [1.2.3] - 2023-04-10
 ### Fixed
 * Switch merging options from `array_merge_recursive` to `array_merge` to prevent the merging of associative arrays keys merging rather than replacing the keys in https://github.com/waynestate/nova-ckeditor4-field/pull/88
