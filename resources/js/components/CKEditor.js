@@ -150,6 +150,15 @@ export default {
 
             editor.on( 'change', onChange );
 
+            editor.on( 'mode', function() {
+                if ( this.mode == 'source' ) {
+                    var editable = editor.editable();
+                    editable.attachListener( editable, 'input', function() {
+                        onChange();
+                    } );
+                }
+            } );
+
             editor.on( 'focus', evt => {
                 this.$emit( 'focus', evt, editor );
             } );
