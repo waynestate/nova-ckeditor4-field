@@ -1,5 +1,5 @@
 <template>
-    <DefaultField :field="field" :errors="errors" :show-help-text="showHelpText">
+    <DefaultField :field="currentField" :errors="errors" :show-help-text="showHelpText">
         <template #field>
             <ckeditor
                 :id="field.attribute"
@@ -12,10 +12,10 @@
 
 
 <script>
-    import { FormField, HandlesValidationErrors } from 'laravel-nova'
+    import { DependentFormField, HandlesValidationErrors } from 'laravel-nova'
 
     export default {
-        mixins: [FormField, HandlesValidationErrors],
+        mixins: [DependentFormField, HandlesValidationErrors],
 
         props: ['resourceName', 'resourceId', 'field'],
 

@@ -2,6 +2,7 @@
 
 namespace Waynestate\Nova\CKEditor4Field;
 
+use Laravel\Nova\Fields\SupportsDependentFields;
 use Waynestate\Nova\CKEditor4Field\Handlers\DiscardPendingAttachments;
 use Waynestate\Nova\CKEditor4Field\Handlers\StorePendingAttachment;
 use Waynestate\Nova\CKEditor4Field\Models\DeleteAttachments;
@@ -12,7 +13,7 @@ use Laravel\Nova\Http\Requests\NovaRequest;
 
 class CKEditor extends Trix
 {
-    use Expandable;
+    use Expandable, SupportsDependentFields;
 
     /**
      * The field's component.
