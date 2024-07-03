@@ -24,6 +24,7 @@ return [
             ['Format', 'FontSize'],
             ['Maximize', 'ShowBlocks', '-', 'About'],
         ],
+        'versionCheck' => false,
     ],
 
     /*
