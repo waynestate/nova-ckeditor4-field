@@ -3,6 +3,20 @@
 [![Latest Stable Version](http://poser.pugx.org/waynestate/nova-ckeditor4-field/v)](https://packagist.org/packages/waynestate/nova-ckeditor4-field) [![Daily Downloads](http://poser.pugx.org/waynestate/nova-ckeditor4-field/d/daily)](https://packagist.org/packages/waynestate/nova-ckeditor4-field)
 [![Total Downloads](http://poser.pugx.org/waynestate/nova-ckeditor4-field/downloads)](https://packagist.org/packages/waynestate/nova-ckeditor4-field) [![Latest Unstable Version](http://poser.pugx.org/waynestate/nova-ckeditor4-field/v/unstable)](https://packagist.org/packages/waynestate/nova-ckeditor4-field) [![License](http://poser.pugx.org/waynestate/nova-ckeditor4-field/license)](https://packagist.org/packages/waynestate/nova-ckeditor4-field) [![PHP Version Require](http://poser.pugx.org/waynestate/nova-ckeditor4-field/require/php)](https://packagist.org/packages/waynestate/nova-ckeditor4-field) 
 
+## :warning: CKEditor4 End of Life :warning:
+
+The time has come where CKEditor4 has reached it's semi End of Life, which you can read more about at [CKEditor 4: End of Life June 2023](https://ckeditor.com/blog/ckeditor-4-end-of-life/)
+
+Unforunately to use the CKEditor4 LTS (anything greater than v4.22.1), it requires that you have a [Long Term Support](https://ckeditor.com/ckeditor-4/).
+
+This package isn't going anywhere soon, but if you are using CKEditor4 v4.22.1 or less, you may [encounter a Security Warning](https://github.com/waynestate/nova-ckeditor4-field/issues/95) due to the CKEditor checking a version file on the CKEditor side.
+
+This disables the security warning option by default within the [configuration](https://github.com/waynestate/nova-ckeditor4-field/blob/main/config/ckeditor-field.php#L27) since by default it points to v4.22.1 non-LTS CKEditor4.
+
+If you do have the LTS package for CKEditor4, please renable your version check within your configuration, before updating this package to `v1.4.0`.
+
+## Overview
+
 This nova package allows you to use [CKEditor 4](https://ckeditor.com/ckeditor-4/) for text areas using Nova v4.
 
 ![CKEditor Form Field](docs/form-field.jpg)
