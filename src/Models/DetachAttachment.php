@@ -12,7 +12,7 @@ class DetachAttachment
      * @param  \Illuminate\Http\Request  $request
      * @return void
      */
-    public function __invoke(Request $request)
+    public function __invoke(Request $request): void
     {
         config('nova.ckeditor-field.attachment_model')::where('url', $request->attachmentUrl)
                         ->get()

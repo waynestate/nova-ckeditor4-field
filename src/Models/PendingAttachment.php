@@ -30,7 +30,7 @@ class PendingAttachment extends Model
      * @param  mixed $model
      * @return void
      */
-    public static function persistDraft($draftId, CKEditor $field, $model)
+    public static function persistDraft($draftId, CKEditor $field, $model): void
     {
         static::where('draft_id', $draftId)->get()->each->persist($field, $model);
     }
@@ -44,7 +44,7 @@ class PendingAttachment extends Model
      * @return void
      * @throws \Exception
      */
-    public function persist(CKEditor $field, $model)
+    public function persist(CKEditor $field, $model): void
     {
         config('nova.ckeditor-field.attachment_model')::create([
             'attachable_type' => get_class($model),
@@ -63,7 +63,7 @@ class PendingAttachment extends Model
      * @return void
      * @throws \Exception
      */
-    public function purge()
+    public function purge(): void
     {
         Storage::disk($this->disk)->delete($this->attachment);
 

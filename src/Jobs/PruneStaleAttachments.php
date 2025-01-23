@@ -9,7 +9,7 @@ class PruneStaleAttachments
      *
      * @return void
      */
-    public function __invoke()
+    public function __invoke(): void
     {
         config('nova.ckeditor-field.pending_attachment_model')::where('created_at', '<=', now()->subDays(1))
             ->orderBy('id', 'desc')
