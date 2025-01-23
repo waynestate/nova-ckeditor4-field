@@ -36,10 +36,10 @@ class CKEditor extends Trix
     /**
      * Set configuration options for the CKEditor editor instance.
      *
-     * @param  array $options
+     * @param array $options
      * @return $this
      */
-    public function options($options)
+    public function options(array $options): static
     {
         $currentOptions = $this->meta['options'] ?? [];
 
@@ -64,7 +64,7 @@ class CKEditor extends Trix
      * @param string|null $disk
      * @return $this
      */
-    public function withFiles($disk = null, $path = '/')
+    public function withFiles(string $disk = null, $path = '/'): static
     {
         $this->withFiles = true;
 
@@ -90,7 +90,7 @@ class CKEditor extends Trix
      * @param  string $attribute
      * @return \Closure|null
      */
-    protected function fillAttribute(NovaRequest $request, $requestAttribute, $model, $attribute)
+    protected function fillAttribute(NovaRequest $request, $requestAttribute, $model, $attribute): ?callable
     {
         parent::fillAttribute($request, $requestAttribute, $model, $attribute);
 
@@ -110,7 +110,7 @@ class CKEditor extends Trix
      *
      * @return void
      */
-    protected function setFilesPlugins()
+    protected function setFilesPlugins(): void
     {
         if (!empty($this->meta['options']['extraPlugins'])) {
             $extraPlugins = explode(',', preg_replace('/\s+/', '', $this->meta['options']['extraPlugins']));

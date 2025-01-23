@@ -27,7 +27,7 @@ class Attachment extends Model
      * @return void
      * @throws \Exception
      */
-    public function purge()
+    public function purge(): void
     {
         Storage::disk($this->disk)->delete($this->attachment);
 

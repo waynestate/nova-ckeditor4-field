@@ -18,7 +18,7 @@ class StorePendingAttachment
      *
      * @var CKEditor
      */
-    public $field;
+    public CKEditor $field;
 
     /**
      * Create a new invokable instance.
@@ -36,7 +36,7 @@ class StorePendingAttachment
      * @param  \Illuminate\Http\Request  $request
      * @return string
      */
-    public function __invoke(Request $request)
+    public function __invoke(Request $request): string
     {
         $filename = $this->generateFilename($request->upload);
 
@@ -72,7 +72,7 @@ class StorePendingAttachment
      * @param UploadedFile $uploadedFile
      * @return string
      */
-    protected function generateFilename(UploadedFile $uploadedFile)
+    protected function generateFilename(UploadedFile $uploadedFile): string
     {
         $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
 
