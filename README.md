@@ -25,6 +25,8 @@ This nova package allows you to use [CKEditor 4](https://ckeditor.com/ckeditor-4
 
 [Nova v1, v2, v3 compatibility instructions](https://github.com/waynestate/nova-ckeditor4-field#nova-v1-v2-or-v3-compatibility)
 
+[Nova v4 compatibility instructions](https://github.com/waynestate/nova-ckeditor4-field#nova-v4-compatibility)
+
 You can install the package into a Laravel application that uses [Nova](https://nova.laravel.com) via composer:
 
 ```bash
@@ -197,6 +199,13 @@ If you require the use of `nova-ckeditor4-field` using Nova v1, v2 or v3, you ca
 
 ```bash
 composer require waynestate/nova-ckeditor4-field:"^0.7.0"
+```
+
+## Nova v4 compatibility
+If you require the use of `nova-ckeditor4-field` using Nova v4 you can install using version [1.4.0](https://github.com/waynestate/nova-ckeditor4-field/releases/tag/1.4.0)
+
+```bash
+composer require waynestate/nova-ckeditor4-field:"^1.4.0"
 ```
 
 ## Changelog
