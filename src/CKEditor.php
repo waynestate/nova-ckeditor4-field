@@ -92,7 +92,7 @@ class CKEditor extends Trix
      */
     protected function fillAttribute(NovaRequest $request, $requestAttribute, $model, $attribute): ?callable
     {
-        parent::fillAttribute($request, $requestAttribute, $model, $attribute);
+        $result = parent::fillAttribute($request, $requestAttribute, $model, $attribute);
 
         if ($request->{$this->attribute.'DraftId'} && $this->withFiles) {
             return function () use ($request, $model, $attribute) {
@@ -103,6 +103,8 @@ class CKEditor extends Trix
                 );
             };
         }
+
+        return $result;
     }
 
     /**
